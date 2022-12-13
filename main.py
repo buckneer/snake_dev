@@ -1,15 +1,28 @@
 from snake import snake
-from turtle import *
+import turtle
 
-screen = Screen()
+screen = turtle.Screen()
 s = snake.Snake(screen)
+#
+# screen.onkeyrelease(s.delete_letter, 'BackSpace')
+#
+# characters = ['a', 'b', 's']
+# for key in characters:
+#     screen.onkeyrelease(lambda key = key: s.type_letter(key), key)
+#
+# screen.listen()
 
-screen.onkeyrelease(s.delete_letter, 'BackSpace')
+# input = turtle.textinput('Input', 'Your text goes here:')
+input = "ab"
+arr = list(input.lower())
 
-characters = ['a', 'b', 's']
-for key in characters:
-    screen.onkeyrelease(lambda key = key: s.type_letter(key), key)
+for item in arr:
+    s.type_letter(item)
 
-screen.listen()
 screen.mainloop()
 
+
+
+steps = {"a": [
+    {""}
+]}
