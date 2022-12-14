@@ -13,7 +13,8 @@ s = snake.Snake(screen)
 # screen.listen()
 
 # input = turtle.textinput('Input', 'Your text goes here:')
-input = "abn"
+input = 'fff'
+
 arr = list(input.lower())
 
 for item in arr:
