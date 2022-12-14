@@ -13,7 +13,7 @@ s = snake.Snake(screen)
 # screen.listen()
 
 # input = turtle.textinput('Input', 'Your text goes here:')
-input = 'fff'
+input = 'pmf'
 
 arr = list(input.lower())
 
@@ -21,9 +21,3 @@ for item in arr:
     s.type_letter(item)
 
 screen.mainloop()
-
-
-
-steps = {"a": [
-    {""}
-]}
