@@ -13,31 +13,7 @@ def generate_letters(x, y, width=50, height=100):
             {'break': {'x': x + (width * 1.1),  'y': y}},
             {'draw': {'x': x + (width * 0.9), 'y': y}},
             {'break': {'x': x - (width * 0.1), 'y': y}},
-            {'draw': {'x': x + (width * 0.1), 'y': y}},
-        ],
-        'n': [
-          {'break': {'x': x, 'y': y}},
-          {'draw': {'x' : x, 'y': y + height}},
-          {'break': {'x': x, 'y': y + (height / 2)}},
-          {'draw': {'x': x + width, 'y': y + (height / 2)}},
-          {'break': {'x': x + width, 'y': y + height}},
-          {'draw': {'x': x + width,'y': y}},
-          {'break': {'x': x, 'y': y + height}},
-          {'draw': {'x': x - (width * 0.1),'y': y + height}},
-          {'draw': {'x': x + (width * 0.1),'y': y + height}},
-          {'break': {'x': x + width, 'y': y}},
-          {'draw': {'x': x + (width - width * 0.1) , 'y': y}},
-          {'draw': {'x': x + (width + width * 0.1) , 'y': y}},
-
-        
-          {'break': {'x': x + width, 'y': y + height}},
-          {'draw': {'x': x + width - (width * 0.1),'y': y + height}},
-          {'draw': {'x': x + width + (width * 0.1),'y': y + height}},
-
-          {'break': {'x': x , 'y': y}},
-          {'draw': {'x': x - (width * 0.1),'y': y}},
-          {'draw': {'x': x + (width * 0.1),'y': y}},
-
+            {'draw': {'x': x + (width * 0.1), 'y': y}}
         ],
         'b': [
             {'break': {'x': x, 'y': y}},
@@ -48,7 +24,15 @@ def generate_letters(x, y, width=50, height=100):
             {'draw': {'x': x + (width / 2), 'y': y + (height / 2)}},
             {'break': {'x': x, 'y': y}},
             {'draw': {'x': x + (width / 2), 'y': y}},
-            {'circle': {'radius': (width / 2), 'angle': 182}},
+            {'circle': {'radius': (width / 2), 'angle': 182}}
+        ],
+        'g': [
+            {'break': {'x': x, 'y': y}},
+            {'draw': {'x': x, 'y': y + height}},
+            {'draw': {'x': x + width, 'y': y + height}},
+            {'draw': {'x': x + width, 'y': y + (height * 0.9)}},
+            {'break': {'x': x - (width * 0.1), 'y': y}},
+            {'draw': {'x': x + (width * 0.1) , 'y': y}}
         ],
         'm': [
             {'break': {'x': x, 'y': y}},
@@ -60,6 +44,43 @@ def generate_letters(x, y, width=50, height=100):
             {'draw': {'x': x + (width * 1.1), 'y': y}},
             {'break': {'x': x + (width * 0.1), 'y': y}},
             {'draw': {'x': x - (width * 0.1), 'y': y}}
+        ],
+        'k': [
+          {'break': {'x': x, 'y': y}},
+          {'draw': {'x': x, 'y': y + height}},
+          {'break': {'x': x, 'y': y + (height * 0.5)}},
+          {'draw': {'x': x + width, 'y': y + height}},
+          {'break': {'x': x, 'y': y + (height * 0.5)}},
+          {'draw': {'x': x + width, 'y': y}},
+          {'break': {'x': x - (width * 0.1), 'y': y}},
+          {'draw': {'x': x + (width * 0.1), 'y': y}},
+          {'break': {'x': x - (width * 0.1), 'y': y + height}},
+          {'draw': {'x': x + (width * 0.1), 'y': y + height}},
+          {'break': {'x': x + (width * 0.9), 'y': y + height}},
+          {'draw': {'x': x + (width * 1.1), 'y': y + height}},
+          {'break': {'x': x + (width * 0.9), 'y': y }},
+          {'draw': {'x': x + (width * 1.1), 'y': y }}
+        ],
+        '': [],
+        'n': [
+          {'break': {'x': x, 'y': y}},
+          {'draw': {'x' : x, 'y': y + height}},
+          {'break': {'x': x, 'y': y + (height / 2)}},
+          {'draw': {'x': x + width, 'y': y + (height / 2)}},
+          {'break': {'x': x + width, 'y': y + height}},
+          {'draw': {'x': x + width,'y': y}},
+          {'break': {'x': x, 'y': y + height}},
+          {'draw': {'x': x - (width * 0.1),'y': y + height}},
+          {'draw': {'x': x + (width * 0.1),'y': y + height}},
+          {'break': {'x': x + width, 'y': y}},
+          {'draw': {'x': x + (width * 0.9) , 'y': y}},
+          {'draw': {'x': x + (width * 1.1) , 'y': y}},        
+          {'break': {'x': x + width, 'y': y + height}},
+          {'draw': {'x': x + (width * 0.9),'y': y + height}},
+          {'draw': {'x': x + (width * 1.1),'y': y + height}},
+          {'break': {'x': x , 'y': y}},
+          {'draw': {'x': x - (width * 0.1),'y': y}},
+          {'draw': {'x': x + (width * 0.1),'y': y}}
         ],
         'p': [
             {'break': {'x': x, 'y': y}},
@@ -73,6 +94,17 @@ def generate_letters(x, y, width=50, height=100):
             {'break': {'x': x, 'y': y}},
             {'draw': {'x': x - (width * 0.1), 'y': y}},
             {'draw': {'x': x + (width * 0.1), 'y': y}}
+        ],
+        't': [
+            {'break': {'x': x + (width * 0.5), 'y': y}},
+            {'draw': {'x': x + (width * 0.5), 'y': y + height}},
+            {'break': {'x': x , 'y': y + height}},
+            {'draw': {'x': x + width, 'y': y + height}},
+            {'draw': {'x': x + width, 'y': y + (height * 0.9)}},
+            {'break': {'x': x, 'y': y + height}},
+            {'draw': {'x': x, 'y': y + (height * 0.9)}},
+            {'break': {'x': x + (width * 0.4), 'y': y}},
+            {'draw': {'x': x + (width * 0.6), 'y': y}}
         ],
         'f': [
             {'break': {'x': x + (width / 2), 'y': y}},
