@@ -18,31 +18,78 @@ def generate_letters(x, y, width=50, height=100):
         'b': [
             {'break': {'x': x, 'y': y}},
             {'draw': {'x': x, 'y': y + height}},
+            {'draw': {'x': x - (width * 0.1), 'y': y + height}},
             {'draw': {'x': x + width, 'y': y + height}},
             {'draw': {'x': x + width, 'y': y + (height * 0.9)}},
             {'break': {'x': x, 'y': y + (height / 2)}},
             {'draw': {'x': x + (width / 2), 'y': y + (height / 2)}},
             {'break': {'x': x, 'y': y}},
             {'draw': {'x': x + (width / 2), 'y': y}},
-            {'circle': {'radius': (width / 2), 'angle': 182}}
+            {'circle': {'radius': (width / 2), 'angle': 182}},
+            {'break': {'x': x, 'y': y}},
+            {'draw': {'x': x - (width * 0.1), 'y': y}}
         ],
         'v': [
             {'break': {'x': x, 'y': y}},
             {'draw': {'x': x, 'y': y + height}},
+            {'draw': {'x': x - (width * 0.1), 'y': y + height}},
             {'draw': {'x': x + (width * 0.2), 'y': y + height}},
-            {'circle': {'radius': -(height * 0.2), 'angle': 180}},
+            {'circle': {'radius': - (height * 0.2), 'angle': 180}},
             {'draw': {'x': x , 'y': y + (height * 0.6)}},
             {'draw': {'x': x + (width * 0.4), 'y': y + (height * 0.6)}},
             {'circle': {'radius': -(height * 0.3), 'angle': 180, 'rotation': 180}},
-            {'draw': {'x': x, 'y': y}}
+            {'draw': {'x': x - (width * 0.1), 'y': y}}
         ],
         'g': [
             {'break': {'x': x, 'y': y}},
             {'draw': {'x': x, 'y': y + height}},
+            {'draw': {'x': x - (width * 0.1), 'y': y + height}},
             {'draw': {'x': x + width, 'y': y + height}},
             {'draw': {'x': x + width, 'y': y + (height * 0.9)}},
             {'break': {'x': x - (width * 0.1), 'y': y}},
             {'draw': {'x': x + (width * 0.1) , 'y': y}}
+        ],   
+        ']': [ #slovo Đ
+            {'break': {'x': x + (width * 0.2), 'y': y}},
+            {'draw': {'x': x + (width * 0.2), 'y': y + height}},
+            {'break': {'x': x, 'y': y + (height * 0.9)}},
+            {'draw': {'x': x, 'y': y + height}},
+            {'draw': {'x': x + width, 'y': y + height}},
+            {'draw': {'x': x + width, 'y': y + (height * 0.9)}},
+            {'break': {'x': x + (width * 0.2), 'y': y + (height * 0.4)}},
+            {'circle': {'radius': -(width * 0.4), 'angle': 180, 'rotation': 270}},
+            {'draw': {'x': x + width, 'y': y - (height * 0.1)}},
+            {'circle': {'radius': -(width * 0.4), 'angle': 90, 'rotation': 0}},
+            {'break': {'x': x + (width * 0.1), 'y': y}},
+            {'draw': {'x': x + (width * 0.3), 'y': y}},
+            {'break': {'x': x + (width * 0.1), 'y': y + (height * 0.8)}},
+            {'draw': {'x': x + (width * 0.3), 'y': y + (height * 0.8)}},
+            {'break': {'x': x + (width * 0.6), 'y': y - (height * 0.25)}},
+            {'draw': {'x': x + (width * 0.6), 'y': y - (height * 0.35)}}
+        ], 
+        '\\': [ #slovo Ž
+            {'break': {'x': x + (width / 2), 'y': y}},
+            {'draw': {'x': x + (width / 2), 'y': y + height}},
+            {'break': {'x': x, 'y': y + (height /2)}},
+            {'draw': {'x': x + width, 'y': y + (height /2)}},
+            {'break': {'x': x + (width * 0.2), 'y': y + (height * 0.1)}},
+            {'draw': {'x': x + (width * 0.2), 'y': y + (height * 0.9)}},
+            {'circle': {'radius': y + (height * 0.1), 'angle': 90, 'rotation': 270}},
+            {'draw': {'x': x, 'y': y + (height * 0.9)}},
+            {'break': {'x': x, 'y': y + (height * 0.1)}},
+            {'draw': {'x': x, 'y': y}},
+            {'circle': {'radius': y + (height * 0.1), 'angle': 90, 'rotation': 180}},
+            {'break': {'x': x + (width * 0.8), 'y': y + (height * 0.1)}},
+            {'draw': {'x': x + (width * 0.8), 'y': y + (height * 0.9)}},
+            {'circle': {'radius': -(y + (height * 0.1)), 'angle': 90}},
+            {'draw': {'x': x + width, 'y': y + (height * 0.9)}},
+            {'break': {'x': x + width, 'y': y + (height * 0.1)}},
+            {'draw': {'x': x + width, 'y': y}},
+            {'circle': {'radius': -(y + (height * 0.1)), 'angle': 90, 'rotation': 180}},
+            {'break': {'x': x + (width * 0.4), 'y': y}},
+            {'draw': {'x': x + (width * 0.6), 'y': y}},
+            {'break': {'x': x + (width * 0.4), 'y': y + height}},
+            {'draw': {'x': x + (width * 0.6), 'y': y + height}}
         ],
         'k': [
           {'break': {'x': x, 'y': y}},
@@ -118,6 +165,7 @@ def generate_letters(x, y, width=50, height=100):
             {'break': {'x': x, 'y': y + (height / 2)}},
             {'draw': {'x': x + (width / 2), 'y': y + (height / 2)}},
             {'circle': {'radius': height / 4, 'angle': 182}},
+            {'draw': {'x': x - (width * 0.1), 'y': y + height}},
             {'break': {'x': x - (width * 0.1), 'y': y}},
             {'draw': {'x': x + (width * 0.1), 'y': y}}
         ],
@@ -139,6 +187,23 @@ def generate_letters(x, y, width=50, height=100):
             {'break': {'x': x + (width * 0.4), 'y': y}},
             {'draw': {'x': x + (width * 0.6), 'y': y}}
         ],
+        '\'': [ #slovo Ć
+            {'break': {'x': x + (width * 0.2), 'y': y}},
+            {'draw': {'x': x + (width * 0.2), 'y': y + height}},
+            {'break': {'x': x, 'y': y + (height * 0.9)}},
+            {'draw': {'x': x, 'y': y + height}},
+            {'draw': {'x': x + width, 'y': y + height}},
+            {'draw': {'x': x + width, 'y': y + (height * 0.9)}},
+            {'break': {'x': x + (width * 0.2), 'y': y + (height * 0.4)}},
+            {'circle': {'radius': -(width * 0.4), 'angle': 180, 'rotation': 270}},
+            {'draw': {'x': x + width, 'y': y}},
+            {'break': {'x': x + (width * 0.1), 'y': y}},
+            {'draw': {'x': x + (width * 0.3), 'y': y}},
+            {'break': {'x': x + (width * 0.1), 'y': y + (height * 0.8)}},
+            {'draw': {'x': x + (width * 0.3), 'y': y + (height * 0.8)}},
+            {'break': {'x': x + (width * 0.9), 'y': y}},
+            {'draw': {'x': x + (width * 1.1), 'y': y}}
+        ],
         'f': [
             {'break': {'x': x + (width / 2), 'y': y}},
             {'draw': {'x': x + (width / 2), 'y': y + height}},
@@ -149,5 +214,21 @@ def generate_letters(x, y, width=50, height=100):
             {'break': {'x': x + (width / 2), 'y': y}},
             {'draw': {'x': x + (width / 2) + (width * 0.1), 'y': y}},
             {'draw': {'x': x + (width / 2) - (width * 0.1), 'y': y}}
+        ],
+        ';': [ #slovo Č
+            {'break': {'x': x + width, 'y': y}},
+            {'draw': {'x': x + width, 'y': y + height}},
+            {'break': {'x': x + width, 'y': y + (height * 0.6)}},
+            {'circle': {'radius': -(height * 0.1), 'angle': 90, 'rotation': 90}},
+            {'draw': {'x': x + (width * 0.2), 'y': y + (height / 2)}},
+            {'circle': {'radius': -(height * 0.1), 'angle': 90}},
+            {'draw': {'x': x, 'y': y + height}},
+            {'break': {'x': x - (width * 0.1), 'y': y + height}},
+            {'draw': {'x': x + (width * 0.1), 'y': y + height}},
+            {'break': {'x': x + (width * 0.9), 'y': y + height}},
+            {'draw': {'x': x + (width * 1.1), 'y': y + height}},
+            {'break': {'x': x + (width * 0.9), 'y': y}},
+            {'draw': {'x': x + (width * 1.1), 'y': y}}
+            
         ]
     }

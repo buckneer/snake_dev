@@ -20,7 +20,7 @@ class Snake:
 
     def typewriter_mode(self):
         self.screen.onkeyrelease(self.delete_letter, 'BackSpace')
-        characters = ['a', 'b', 'g', 'm', 'k', '', 'n', 'p', 't', 'f']
+        characters = ['a', 'b', 'v', 'g', ']', '\\', 'k', 'm', 'n', 'o', 'p', 'r', 's', 't', '\'', 'f', ';']
         self.start_point = -1 * (self.width / 2.5)
         for key in characters:
             self.screen.onkeyrelease(lambda key = key: self.type_letter(key), key)
