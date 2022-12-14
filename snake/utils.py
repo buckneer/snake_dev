@@ -25,5 +25,30 @@ def generate_letters(x, y, width=50, height=100):
             {"break": {"x": x, "y": y}},
             {"draw": {"x": x + (width / 2), "y": y}},
             {"circle": {"radius": (width / 2), "angle": 182}},
-        ]
+        ],
+        'n': [
+          {'break': {'x': x, 'y': y}},
+          {'draw': {'x' : x, 'y': y + height}},
+          {'break': {'x': x, 'y': y + (height / 2)}},
+          {'draw': {'x': x + width, 'y': y + (height / 2)}},
+          {'break': {'x': x + width, 'y': y + height}},
+          {'draw': {'x': x + width,'y': y}},
+          {'break': {'x': x, 'y': y + height}},
+          {'draw': {'x': x - (width * 0.1),'y': y + height}},
+          {'draw': {'x': x + (width * 0.1),'y': y + height}},
+          {'break': {'x': x + width, 'y': y}},
+          {'draw': {'x': x + (width - width * 0.1) , 'y': y}},
+          {'draw': {'x': x + (width + width * 0.1) , 'y': y}},
+
+        
+          {'break': {'x': x + width, 'y': y + height}},
+          {'draw': {'x': x + width - (width * 0.1),'y': y + height}},
+          {'draw': {'x': x + width + (width * 0.1),'y': y + height}},
+
+          {'break': {'x': x , 'y': y}},
+          {'draw': {'x': x - (width * 0.1),'y': y}},
+          {'draw': {'x': x + (width * 0.1),'y': y}},
+
+        ],
+
     }
