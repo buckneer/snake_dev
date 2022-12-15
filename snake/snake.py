@@ -5,7 +5,7 @@ from time import sleep
 
 class Snake:
 
-    def __init__(self, screen, width=800, height=400):
+    def __init__(self, screen, width=1000, height=400):
         self.shapes = []
         self.next_step = 0
         self.height = height
@@ -13,15 +13,19 @@ class Snake:
         self.screen = screen
         self.letter_width = 50
         self.letter_height = self.letter_width * 2
-        self.start_point = 0
+        self.start_point = {"x": 0, "y": 0}
         self.steps = {}
+        self.row = 0
+        self.move_factor = 0
+        self.y = 0
 
         self.screen.setup(width, height)
 
     def typewriter_mode(self):
         self.screen.onkeyrelease(self.delete_letter, 'BackSpace')
         characters = ['a', 'b', 'v', 'g', ']', '\\', 'k', 'm', 'n', 'o', 'p', 'r', 's', 't', '\'', 'f', ';']
-        self.start_point = -1 * (self.width / 2.5)
+        self.start_point["x"] = -1 * (self.width / 2.5)
+        self.start_point["y"] = (self.height / 2.5) - self.letter_height
         for key in characters:
             self.screen.onkeyrelease(lambda key = key: self.type_letter(key), key)
 
@@ -46,25 +50,35 @@ class Snake:
         half = len(arr) // 2
 
         if len(arr) % 2 == 0:
-            self.start_point = -1 * (half * self.letter_width)
+            self.start_point["x"] = -1 * (half * self.letter_width)
         else:
-            self.start_point = -1 * (half * self.letter_width) - 25
+            self.start_point["x"] = -1 * (half * self.letter_width) - 25
 
         return arr
 
     def type_letter(self, letter):
 
-        if len(self.shapes) == 0:
-            x = self.start_point
-        else:
-            x = self.start_point + (self.letter_width * 1.2) * len(self.shapes)
+        # y = ((self.letter_height + self.letter_width) * -1) * self.row
+        y = self.start_point["y"]
 
-        y = 0
+
+
+        if len(self.shapes) == 0:
+            x = self.start_point["x"]
+        else:
+            x = self.start_point["x"] + (self.letter_width * 1.2) * self.move_factor
+
+        self.move_factor += 1
         self.shapes.append(turtle.Turtle())
+
+        if len(self.shapes) % 11 == 0 and not len(self.shapes) == 0:
+            self.start_point["y"] += (self.letter_height + self.letter_width) * -1
+            self.move_factor = 0
         self.shapes[-1].speed(0)
 
         self.steps = generate_letters(x, y)
         self.translate(letter, self.shapes[-1])
+
 
     def translate(self, letter, turtle_object: turtle.Turtle):
 
