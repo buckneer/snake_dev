@@ -70,6 +70,7 @@ class Snake:
 
         self.move_factor += 1
         self.shapes.append(turtle.Turtle())
+
         if len(self.shapes) % 11 == 0 and not len(self.shapes) == 0:
             self.start_point["y"] += (self.letter_height + self.letter_width) * -1
             self.move_factor = 0
