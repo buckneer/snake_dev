@@ -61,9 +61,7 @@ class Snake:
         # y = ((self.letter_height + self.letter_width) * -1) * self.row
         y = self.start_point["y"]
 
-        if len(self.shapes) % 11 == 0 and not len(self.shapes) == 0:
-            self.start_point["y"] += (self.letter_height + self.letter_width) * -1
-            self.move_factor = 0
+
 
         if len(self.shapes) == 0:
             x = self.start_point["x"]
@@ -72,6 +70,9 @@ class Snake:
 
         self.move_factor += 1
         self.shapes.append(turtle.Turtle())
+        if len(self.shapes) % 11 == 0 and not len(self.shapes) == 0:
+            self.start_point["y"] += (self.letter_height + self.letter_width) * -1
+            self.move_factor = 0
         self.shapes[-1].speed(0)
 
         self.steps = generate_letters(x, y)
