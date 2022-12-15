@@ -4,7 +4,7 @@ import turtle
 screen = turtle.Screen()
 s = snake.Snake(screen)
 
-s.write_word("ABVG]\\klqmnwoprst\'uf;")
+s.write_word("abvgd]e\\zijklqmnwoprst\'ufhc;x[")
 # s.typewriter_mode()
 
 screen.mainloop()
