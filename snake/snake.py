@@ -3,6 +3,7 @@ from .utils import generate_letters, generate_letters_width
 from time import sleep
 import os
 
+
 class Snake:
 
     def __init__(self, screen, letter_width = 50, width=1000, height=400):
@@ -46,10 +47,9 @@ class Snake:
             else:
                 arr.append(self.letter_width)
 
-        print(arr)
         #We'll (hopefully)
         pass #this exam
-        
+
 
     def write_word(self, word):
         self.get_width_of_each_letter(word)
@@ -64,10 +64,13 @@ class Snake:
             self.shapes[-1].clear()
             del self.shapes[-1]
 
-
     def get_starting_point(self, word):
+
         arr = list(word.lower())
         half = len(arr) // 2
+
+        if len(arr) >= 10:
+            half = 5
 
         if len(arr) % 2 == 0:
             self.start_point["x"] = -1 * (half * self.letter_width)
@@ -79,9 +82,8 @@ class Snake:
     def type_letter(self, letter):
 
         # y = ((self.letter_height + self.letter_width) * -1) * self.row
+
         y = self.start_point["y"]
-
-
 
         if len(self.shapes) == 0:
             x = self.start_point["x"]
@@ -91,7 +93,7 @@ class Snake:
         self.move_factor += 1
         self.shapes.append(turtle.Turtle())
 
-        if len(self.shapes) % 11 == 0 and not len(self.shapes) == 0:
+        if len(self.shapes) % 10 == 0 and not len(self.shapes) == 0:
             self.start_point["y"] += (self.letter_height + self.letter_width) * -1
             self.move_factor = 0
         self.shapes[-1].speed(0)
@@ -134,15 +136,15 @@ class Snake:
 
     # ukoliko napravimo (100% real) dugme za povecanje fonta ova metoda ce imat' koristi
     def change_font_size_by(self, font_change_value):
-        
-        if(self.letter_width + font_change_value >= 0 and len(self.shapes) == 0): # Ovde treba dodati i da font slova ne bude veci od margine!!! 
-            self.letter_width = self.letter_width + font_change_value    
+
+        if(self.letter_width + font_change_value >= 0 and len(self.shapes) == 0): # Ovde treba dodati i da font slova ne bude veci od margine!!!
+            self.letter_width = self.letter_width + font_change_value
             self.letter_height = self.letter_width * 2
-    
+
     # sluzi da bi se obrisalo svako slovo (duuuuh)
     # ova metoda se poziva kada se klikne nas program (kanta)
     def delete_every_letter(self):
-        
+
         for i in range(len(self.shapes)):
             self.delete_letter()
 
@@ -150,7 +152,7 @@ class Snake:
         self.row = 0
         self.move_factor = 0
         self.y = 0
-          
+
     # za izbacivanje polja za input (i moje buducnosti kroz prozor)
     def add_input(self):
         self.write_word(turtle.textinput("Унос", "Унесите Ваш унос:"))
@@ -160,7 +162,7 @@ class Snake:
         icon_width = 30
 
         path = os.getcwd().replace('\\', '/') + '/snake/images/'
-        
+
         trashcan_gif = path + 'delete.gif'
         input_gif = path + 'input.gif'
 

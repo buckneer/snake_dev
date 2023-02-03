@@ -5,4 +5,5 @@ screen = turtle.Screen()
 
 s = snake.Snake(screen)
 
+
 screen.mainloop()
