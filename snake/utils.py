@@ -15,6 +15,15 @@ def generate_letters_width(width = 50):
             'w': width * 1.7
         }
 
+
+def get_letter_width(letter):
+    if letter in generate_letters_width():
+        return generate_letters_width()[letter]
+    else:
+        return 50
+    pass
+
+
 def generate_letters(x, y, width=50, height=100):
 
     return \

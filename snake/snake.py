@@ -1,5 +1,5 @@
 import turtle
-from .utils import generate_letters, generate_letters_width
+from .utils import generate_letters, generate_letters_width, get_letter_width
 from time import sleep
 import os
 
@@ -19,6 +19,9 @@ class Snake:
         self.row = 0
         self.move_factor = 0
         self.y = 0
+        self.last_letter_width = 0
+        self.letter_offset = 0
+        self.word_width = 0
 
         self.screen.setup(width, height)
         self.create_UI()
@@ -69,8 +72,8 @@ class Snake:
         arr = list(word.lower())
         half = len(arr) // 2
 
-        if len(arr) >= 10:
-            half = 5
+        if len(arr) >= 12:
+            half = 6
 
         if len(arr) % 2 == 0:
             self.start_point["x"] = -1 * (half * self.letter_width)
@@ -81,25 +84,25 @@ class Snake:
 
     def type_letter(self, letter):
 
-        # y = ((self.letter_height + self.letter_width) * -1) * self.row
+        # od danas najvise mrzim slova љ i њ da im jebem sve!!!
 
+        x = self.start_point["x"] + self.word_width * self.move_factor
         y = self.start_point["y"]
 
-        if len(self.shapes) == 0:
-            x = self.start_point["x"]
-        else:
-            x = self.start_point["x"] + (self.letter_width * 1.2) * self.move_factor
-
-        self.move_factor += 1
+        self.move_factor = 1
         self.shapes.append(turtle.Turtle())
 
-        if len(self.shapes) % 10 == 0 and not len(self.shapes) == 0:
+        if len(self.shapes) % 12 == 0 and not len(self.shapes) == 0:
             self.start_point["y"] += (self.letter_height + self.letter_width) * -1
             self.move_factor = 0
+            self.word_width = 0
+
         self.shapes[-1].speed(0)
 
         self.steps = generate_letters(x, y, self.letter_width, self.letter_height)
         self.translate(letter, self.shapes[-1])
+
+        self.word_width += get_letter_width(letter) + 10
 
     def translate(self, letter, turtle_object: turtle.Turtle):
 
@@ -152,6 +155,7 @@ class Snake:
         self.row = 0
         self.move_factor = 0
         self.y = 0
+        self.word_width = 0
 
     # za izbacivanje polja za input (i moje buducnosti kroz prozor)
     def add_input(self):
