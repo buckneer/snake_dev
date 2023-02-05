@@ -25,6 +25,7 @@ class Snake:
 
         self.screen.setup(width, height)
         self.create_UI()
+        self.generateFontWidthBasedOnScreenWidth(self.width, self.letter_width)
 
     def typewriter_mode(self):
         self.screen.onkeyrelease(self.delete_letter, 'BackSpace')
@@ -50,14 +51,14 @@ class Snake:
             else:
                 arr.append(self.letter_width)
 
+        return arr
         #We'll (hopefully)
-        pass #this exam
+        #pass #this exam
 
 
     def write_word(self, word):
-        self.get_width_of_each_letter(word)
         arr = self.get_starting_point(word)
-
+        
         for item in arr:
             self.type_letter(item)
 
@@ -68,19 +69,23 @@ class Snake:
             del self.shapes[-1]
 
     def get_starting_point(self, word):
+        word_arr = list(word.lower())
+        arr = self.get_width_of_each_letter(word)
+        first_word_width = 0
 
-        arr = list(word.lower())
-        half = len(arr) // 2
-
-        if len(arr) >= 12:
-            half = 6
-
-        if len(arr) % 2 == 0:
-            self.start_point["x"] = -1 * (half * self.letter_width)
+        if(len(arr) >= 12): 
+            for i in range(12):
+                first_word_width += arr[i] + (arr[i] * 0.66)
         else:
-            self.start_point["x"] = -1 * (half * self.letter_width) - (self.letter_width / 2)
+            for i in arr:
+                first_word_width += i + (i * 0.66)
+                print(first_word_width)
 
-        return arr
+        half = (first_word_width) / 2
+        self.start_point['x'] = -half
+
+        print(first_word_width)
+        return word_arr
 
     def type_letter(self, letter):
 
@@ -93,7 +98,7 @@ class Snake:
         self.shapes.append(turtle.Turtle())
 
         if len(self.shapes) % 12 == 0 and not len(self.shapes) == 0:
-            self.start_point["y"] += (self.letter_height + self.letter_width) * -1
+            self.start_point["y"] -= (self.letter_height + self.letter_width)
             self.move_factor = 0
             self.word_width = 0
 
@@ -101,8 +106,9 @@ class Snake:
 
         self.steps = generate_letters(x, y, self.letter_width, self.letter_height)
         self.translate(letter, self.shapes[-1])
-
-        self.word_width += get_letter_width(letter) + 10
+        
+        if(len(self.shapes) % 12 != 0 and len(self.shapes) != 0):
+            self.word_width += get_letter_width(letter) + (get_letter_width(letter) / 5)
 
     def translate(self, letter, turtle_object: turtle.Turtle):
 
@@ -185,3 +191,17 @@ class Snake:
         input_icon.penup()
         input_icon.setpos(-40, (self.height / 2) - icon_width)
         input_icon.onclick(lambda x, y: self.add_input())
+
+    def generateFontWidthBasedOnScreenWidth(self, screenWidth, currentLetterWidth):
+        max_width = max(generate_letters_width(currentLetterWidth).values())
+        max_width_new = max_width
+        if(max_width * 12 > (screenWidth * 0.7)):
+            while(max_width_new * 12 > (screenWidth * 0.7)):
+                max_width_new -= 1
+
+            ratio = max_width_new / max_width 
+            
+            self.letter_width = self.letter_width * ratio
+            self.letter_height = self.letter_width * 2
+
+            print(self.letter_height)

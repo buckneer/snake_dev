@@ -16,13 +16,11 @@ def generate_letters_width(width = 50):
         }
 
 
-def get_letter_width(letter):
-    if letter in generate_letters_width():
-        return generate_letters_width()[letter]
+def get_letter_width(letter, width = 50):
+    if letter in generate_letters_width(width):
+        return generate_letters_width(width)[letter]
     else:
-        return 50
-    pass
-
+        return width
 
 def generate_letters(x, y, width=50, height=100):
 
