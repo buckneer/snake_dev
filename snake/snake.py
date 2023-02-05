@@ -17,12 +17,12 @@ class Snake:
         self.start_point = {"x": 0, "y": 0}
         self.steps = {}
         self.row = 0
+        self.row_letters = 12
         self.move_factor = 0
         self.y = 0
         self.last_letter_width = 0
         self.letter_offset = 0
         self.word_width = 0
-
         self.screen.setup(width, height)
         self.create_UI()
         self.generateFontWidthBasedOnScreenWidth(self.width, self.letter_width)
@@ -38,8 +38,6 @@ class Snake:
         self.screen.listen()
         pass
 
-    # ovom metodom dobija se niz sa sirinom svakog unetog slova, iskoristiti ovo za poravnanje
-    # ili nzm za dobijanje sirine svakog slova jer ovo je najgore sranje koje sam u zivotu radio
     def get_width_of_each_letter(self, word):
         word_array = list(word.lower())
         arr = []
@@ -52,9 +50,6 @@ class Snake:
                 arr.append(self.letter_width)
 
         return arr
-        #We'll (hopefully)
-        #pass #this exam
-
 
     def write_word(self, word):
         arr = self.get_starting_point(word)
@@ -73,13 +68,12 @@ class Snake:
         arr = self.get_width_of_each_letter(word)
         first_word_width = 0
 
-        if(len(arr) >= 12): 
-            for i in range(12):
+        if len(arr) >= self.row_letters:
+            for i in range(self.row_letters):
                 first_word_width += arr[i] + (arr[i] * 0.66)
         else:
             for i in arr:
                 first_word_width += i + (i * 0.66)
-                print(first_word_width)
 
         half = (first_word_width) / 2
         self.start_point['x'] = -half
@@ -89,15 +83,13 @@ class Snake:
 
     def type_letter(self, letter):
 
-        # od danas najvise mrzim slova љ i њ da im jebem sve!!!
-
         x = self.start_point["x"] + self.word_width * self.move_factor
         y = self.start_point["y"]
 
         self.move_factor = 1
         self.shapes.append(turtle.Turtle())
 
-        if len(self.shapes) % 12 == 0 and not len(self.shapes) == 0:
+        if len(self.shapes) % self.row_letters == 0 and not len(self.shapes) == 0:
             self.start_point["y"] -= (self.letter_height + self.letter_width)
             self.move_factor = 0
             self.word_width = 0
@@ -107,7 +99,7 @@ class Snake:
         self.steps = generate_letters(x, y, self.letter_width, self.letter_height)
         self.translate(letter, self.shapes[-1])
         
-        if(len(self.shapes) % 12 != 0 and len(self.shapes) != 0):
+        if len(self.shapes) % self.row_letters != 0 and len(self.shapes) != 0:
             self.word_width += get_letter_width(letter) + (get_letter_width(letter) / 5)
 
     def translate(self, letter, turtle_object: turtle.Turtle):
@@ -143,15 +135,12 @@ class Snake:
 
         turtle_object.hideturtle()
 
-    # ukoliko napravimo (100% real) dugme za povecanje fonta ova metoda ce imat' koristi
     def change_font_size_by(self, font_change_value):
 
-        if(self.letter_width + font_change_value >= 0 and len(self.shapes) == 0): # Ovde treba dodati i da font slova ne bude veci od margine!!!
+        if self.letter_width + font_change_value >= 0 and len(self.shapes) == 0:
             self.letter_width = self.letter_width + font_change_value
             self.letter_height = self.letter_width * 2
 
-    # sluzi da bi se obrisalo svako slovo (duuuuh)
-    # ova metoda se poziva kada se klikne nas program (kanta)
     def delete_every_letter(self):
 
         for i in range(len(self.shapes)):
@@ -163,11 +152,9 @@ class Snake:
         self.y = 0
         self.word_width = 0
 
-    # za izbacivanje polja za input (i moje buducnosti kroz prozor)
     def add_input(self):
         self.write_word(turtle.textinput("Унос", "Унесите Ваш унос:"))
 
-    # pravi ceo User Interface (dva mizerna dugmeta)
     def create_UI(self):
         icon_width = 30
 
