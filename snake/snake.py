@@ -190,5 +190,3 @@ class Snake:
             
             self.letter_width = self.letter_width * ratio
             self.letter_height = self.letter_width * 2
-
-            print(self.letter_height)
